@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vitality Working | Pausas activas para call centers</title>
+<meta name="description" content="App de escritorio que programa y guía las pausas activas de los agentes de call center, con aplazamientos pensados para no interrumpir llamadas y reportes para SST.">
+<meta name="theme-color" content="#0d2f3a">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="header">
+  <div class="wrap header__bar">
+    <a class="brand" href="#inicio" aria-label="Vitality Working, inicio">
+      <img src="assets/logo.png" alt="" width="44" height="40">
+      <span>Vitality <em>Working</em></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#problema">El problema</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#planes">Planes</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="#demo-contacto">Solicitar demo</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1>Pausas activas que tus agentes sí cumplen</h1>
+      <p class="lead">Vitality Working es una app de escritorio que programa y guía las pausas activas de tu call center. Se ajusta al turno de cada agente y permite aplazar la pausa si hay una llamada en curso.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#demo-contacto">Solicitar demo</a>
+        <a class="btn btn--ghost" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+      <p class="hero__note"><strong>Piloto gratuito de 14 días</strong> en una de tus campañas de mayor exigencia.</p>
+    </div>
+
+    <div class="demo">
+      <div class="screen" id="screen" data-state="alert">
+        <div class="screen__bar"><span>Vitality Working</span><small>Vista ilustrativa</small></div>
+        <div class="screen__body">
+
+          <div class="state state--alert">
+            <h2>Es hora de tu pausa activa</h2>
+            <p>Si estás atendiendo a un cliente, puedes aplazarla hasta dos veces.</p>
+            <div class="pips" aria-hidden="true"><span>Pospuestas</span><i></i><i></i></div>
+            <div class="flash" id="flash" aria-live="polite"></div>
+            <div class="screen__btns">
+              <button class="sbtn sbtn--main" type="button" id="btn-start">Iniciar pausa</button>
+              <button class="sbtn" type="button" id="btn-snooze">Posponer 5 min</button>
+            </div>
+          </div>
+
+          <div class="state state--pause">
+            <div class="ring" role="timer" aria-label="Tiempo restante de la pausa">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle class="bar" id="ring-bar" cx="60" cy="60" r="54"/></svg>
+              <div class="ring__time" id="ring-time">0:20</div>
+            </div>
+            <div class="exercise" id="exercise">Estira el cuello hacia un lado</div>
+            <p class="lockline">El equipo permanece bloqueado durante la pausa.</p>
+          </div>
+
+          <div class="state state--done">
+            <h3>Pausa completada</h3>
+            <p>Listo para volver a la operación. Tu cumplimiento queda registrado para SST.</p>
+            <div class="screen__btns"><button class="sbtn sbtn--main" type="button" id="btn-reset">Ver la demo otra vez</button></div>
+          </div>
+
+        </div>
+      </div>
+      <p class="demo__caption">Pruébala: la pausa real dura lo que defina tu área de SST. Esta demo dura 20 segundos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="section section--alt" id="problema">
+  <div class="wrap problem">
+    <div>
+      <h2>Un turno entero frente a la pantalla pasa factura</h2>
+      <p class="lead lead--mt">Los agentes trabajan bajo presión, con métricas de tiempo estrictas y casi sin moverse. Las pausas activas existen, pero los recordatorios, correos y folletos se omiten cuando hay una cola de llamadas esperando.</p>
+      <p class="lead">El resultado se paga en salud y en operación.</p>
+    </div>
+    <ul class="problem__list">
+      <li><strong>Fatiga y molestias osteomusculares</strong><span>Cuello, espalda, muñecas y vista cansada por rutinas continuas.</span></li>
+      <li><strong>Desgaste mental</strong><span>Sobrecarga cognitiva y estrés que terminan en burnout.</span></li>
+      <li><strong>Rotación y ausentismo</strong><span>Reemplazar a un agente que renuncia por agotamiento cuesta más que cuidarlo.</span></li>
+      <li><strong>Menor productividad y calidad</strong><span>Un agente agotado atiende peor y rinde menos.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section band" id="como-funciona">
+  <div class="wrap">
+    <h2>Cómo funciona cada pausa</h2>
+    <p class="lead lead--mt">Instalas la app en los equipos de los agentes y define las reglas con tu área de SST. El resto ocurre solo.</p>
+
+    <ol class="steps">
+      <li class="step"><span class="step__n">1</span><h3>Se adapta al turno</h3><p>Cada agente tiene su turno y cambia de una semana a otra. Los temporizadores de pausa se ajustan a la jornada de cada persona.</p></li>
+      <li class="step"><span class="step__n">2</span><h3>Avisa cuando toca</h3><p>Las pausas se programan según lo que establece tu área de SST.</p></li>
+      <li class="step"><span class="step__n">3</span><h3>Aplaza si hay llamada</h3><p>Si el agente está atendiendo a un cliente, puede posponer hasta dos veces, de 5 minutos cada una. Son 10 minutos para cerrar la atención y tomar la pausa.</p></li>
+      <li class="step"><span class="step__n">4</span><h3>Bloquea y guía</h3><p>Durante el tiempo definido por SST, el equipo se bloquea (parcial o totalmente, según configures) y muestra guías visuales de estiramiento, respiración y descanso mental.</p></li>
+      <li class="step"><span class="step__n">5</span><h3>Reporta a SST</h3><p>El panel en la nube muestra el cumplimiento de pausas para supervisores y para el área de Salud y Seguridad en el Trabajo.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="section" id="beneficios">
+  <div class="wrap">
+    <h2>Pensada para quien usa la app y para quien responde por ella</h2>
+    <div class="split">
+      <div>
+        <h3>Para los agentes</h3>
+        <ul>
+          <li><span><strong>Pausas guiadas.</strong> Estiramientos y ejercicios ergonómicos que se siguen en pantalla, sin tener que pensar.</span></li>
+          <li><span><strong>Salud mental, no solo física.</strong> Módulos de respiración y descompresión del estrés, además de descanso visual.</span></li>
+          <li><span><strong>Respeta la llamada en curso.</strong> Puedes terminar de atender antes de tu pausa.</span></li>
+          <li><span><strong>Alineada con tu turno.</strong> Los horarios cambian con tu jornada.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Para SST y operaciones</h3>
+        <ul>
+          <li><span><strong>Cumplimiento medible.</strong> Panel en la nube con las pausas realizadas, para SST y supervisores.</span></li>
+          <li><span><strong>Reportes auditables.</strong> Evidencia útil para inspecciones de ARL y para el seguimiento del riesgo psicosocial (Resolución 2646 de 2008).</span></li>
+          <li><span><strong>Bloqueo configurable.</strong> Parcial o total, con las reglas que defina tu equipo.</span></li>
+          <li><span><strong>Hecha para BPO.</strong> Cuida la salud del equipo sin perder de vista las métricas de la operación.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="section section--alt" id="planes">
+  <div class="wrap">
+    <h2>Planes según el tamaño de tu operación</h2>
+    <p class="lead lead--mt">Suscripción mensual por licencia de agente. Entre más agentes, menor el precio por licencia.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="plan__name"><h3>Start</h3><p>Hasta 30 agentes</p></div>
+        <div class="plan__price"><strong>$15.000</strong><span>COP por agente al mes</span></div>
+        <ul><li>Bloqueo automático</li><li>Temporizador</li><li>Pausas activas básicas</li></ul>
+      </div>
+      <div class="plan">
+        <div class="plan__name"><h3>Business</h3><p>De 31 a 100 agentes</p></div>
+        <div class="plan__price"><strong>$12.000</strong><span>COP por agente al mes</span></div>
+        <ul><li>Reportes avanzados para supervisores</li><li>Reportes para Salud y Seguridad en el Trabajo (SST)</li></ul>
+      </div>
+      <div class="plan">
+        <div class="plan__name"><h3>Corporate</h3><p>Más de 100 agentes</p></div>
+        <div class="plan__price"><strong>$10.000</strong><span>COP por agente al mes</span></div>
+        <ul><li>Personalización corporativa</li><li>Integración con Directorio Activo</li><li>Soporte 24/7</li></ul>
+      </div>
+    </div>
+
+    <div class="pilot">
+      <p><strong>Pruébalo antes de decidir.</strong> Hacemos un piloto gratuito de 14 días en la campaña que tú elijas, con una demostración personalizada.</p>
+      <a class="btn btn--primary" href="#demo-contacto">Pedir el piloto</a>
+    </div>
+    <p class="fineprint">Precios en pesos colombianos (COP). Confirmaremos el valor final según el número de licencias de tu operación.</p>
+  </div>
+</section>
+
+<!-- PRIVACIDAD -->
+<section class="section" id="privacidad">
+  <div class="wrap privacy">
+    <div>
+      <h2>Los datos de salud se tratan con cuidado</h2>
+      <p class="lead lead--mt">Vitality Working cumple la Ley 1581 de 2012 y el Decreto 1377 de 2013 sobre protección de datos personales en Colombia.</p>
+    </div>
+    <ul>
+      <li>La información de salud o fatiga es sensible: se trata de forma confidencial y solo con autorización explícita del usuario.</li>
+      <li>El cumplimiento de descansos se analiza de forma anónima y agregada.</li>
+      <li>Las configuraciones de la app viajan cifradas (SSL/TLS) y el acceso a las bases de datos es restringido.</li>
+      <li><a class="link" href="#politica">Leer la política completa de tratamiento de datos</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt" id="preguntas">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Qué pasa si el agente está en una llamada cuando toca la pausa?</summary><p>Puede posponerla hasta dos veces, de 5 minutos cada una. Así tiene 10 minutos para terminar la atención y luego toma su pausa.</p></details>
+      <details><summary>¿Cuánto dura la pausa?</summary><p>El tiempo lo define el área de SST de tu empresa. Durante ese tiempo la app bloquea el equipo y guía al agente con ejercicios.</p></details>
+      <details><summary>¿Cómo sabe la app cuándo trabaja cada agente?</summary><p>Los temporizadores se ajustan al turno de cada persona, que puede cambiar de una semana a otra.</p></details>
+      <details><summary>¿Quién ve la información de cumplimiento?</summary><p>Supervisores y el área de SST, desde el panel en la nube. Los datos de salud se tratan de forma confidencial y anónima, según nuestra política de datos.</p></details>
+      <details><summary>¿Se puede integrar con la infraestructura de mi empresa?</summary><p>El plan Corporate incluye integración con Directorio Activo, personalización corporativa y soporte 24/7.</p></details>
+      <details><summary>¿Puedo probarla antes de contratar?</summary><p>Sí. Ofrecemos un piloto gratuito de 14 días en una campaña de tu operación, con demostración personalizada.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section band" id="demo-contacto">
+  <div class="wrap cta">
+    <div>
+      <h2>Veamos cómo funcionaría en tu operación</h2>
+      <p class="cta__text">Cuéntanos cuántos agentes tienes y qué campaña es la más exigente. Preparamos una demostración y te proponemos el piloto.</p>
+      <p class="cta__mail">También puedes escribirnos a <a href="mailto:contacto@vitalityworking.com">contacto@vitalityworking.com</a></p>
+    </div>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href="mailto:contacto@vitalityworking.com?subject=Solicitud%20de%20demo%20-%20Vitality%20Working&amp;body=Hola%2C%20quiero%20solicitar%20una%20demo.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ACargo%3A%20%0AN%C3%BAmero%20de%20agentes%3A%20">Solicitar demo por correo</a>
+    </div>
+  </div>
+</section>
+
+<!-- POLÍTICA DE DATOS -->
+<section class="section" id="politica">
+  <div class="wrap">
+    <h2>Política de tratamiento de datos personales</h2>
+    <p class="lead lead--mt">Vitality Working S.A.S. (en formación). En cumplimiento de la Ley Estatutaria 1581 de 2012 y el Decreto Reglamentario 1377 de 2013 de la República de Colombia.</p>
+
+    <div class="policy">
+      <details><summary>1. Responsable del tratamiento</summary><div class="body">
+        <p><strong>Razón social:</strong> Vitality Working S.A.S. (en adelante, «la Empresa» o «Vitality Working»).</p>
+        <p><strong>Domicilio:</strong> Bucaramanga, Santander, Colombia.</p>
+        <p><strong>Correos:</strong> habeasdata@vitalityworking.com y contacto@vitalityworking.com.</p>
+        <p><strong>Canal de peticiones, quejas y reclamos (PQR):</strong> Área de Gestión Administrativa y de Tratamiento de Datos.</p>
+      </div></details>
+
+      <details><summary>2. Marco legal y ámbito de aplicación</summary><div class="body">
+        <p>Esta política aplica a todas las bases de datos y archivos con datos personales tratados por Vitality Working, como Responsable y/o Encargado del tratamiento. Se rige por:</p>
+        <ul>
+          <li>Artículo 15 de la Constitución Política de Colombia (derecho al Habeas Data).</li>
+          <li>Ley Estatutaria 1581 de 2012, por la cual se dictan disposiciones generales para la protección de datos personales.</li>
+          <li>Decreto 1377 de 2013, que reglamenta parcialmente la Ley 1581 de 2012.</li>
+          <li>Demás normas concordantes, complementarias o modificatorias dictadas por la Superintendencia de Industria y Comercio (SIC).</li>
+        </ul>
+      </div></details>
+
+      <details><summary>3. Definiciones clave</summary><div class="body">
+        <ul>
+          <li><strong>Autorización:</strong> consentimiento previo, expreso e informado del Titular para el tratamiento de sus datos.</li>
+          <li><strong>Base de datos:</strong> conjunto organizado de datos personales objeto de tratamiento.</li>
+          <li><strong>Dato personal:</strong> información vinculada o asociable a una o varias personas naturales determinadas o determinables (agentes de call center, administradores de clientes B2B, proveedores).</li>
+          <li><strong>Dato sensible:</strong> el que afecta la intimidad del Titular o cuyo uso indebido puede generar discriminación (por ejemplo, datos sobre salud física o mental, hábitos de descanso o fatiga).</li>
+          <li><strong>Encargado del tratamiento:</strong> persona que, por sí misma o con otros, trata datos personales por cuenta del Responsable.</li>
+          <li><strong>Responsable del tratamiento:</strong> persona que, por sí misma o con otros, decide sobre la base de datos y/o el tratamiento.</li>
+          <li><strong>Titular:</strong> persona natural cuyos datos son objeto de tratamiento (agentes, empleados, clientes corporativos, proveedores).</li>
+        </ul>
+      </div></details>
+
+      <details><summary>4. Principios rectores</summary><div class="body">
+        <ul>
+          <li><strong>Legalidad:</strong> el tratamiento es una actividad reglada que debe sujetarse a la ley.</li>
+          <li><strong>Finalidad:</strong> responde a una finalidad legítima, informada al Titular.</li>
+          <li><strong>Libertad:</strong> solo se ejerce con el consentimiento previo, expreso e informado del Titular.</li>
+          <li><strong>Veracidad o calidad:</strong> la información debe ser veraz, completa, exacta, actualizada, comprobable y comprensible.</li>
+          <li><strong>Transparencia:</strong> se garantiza el derecho del Titular a obtener información sobre los datos que le conciernen.</li>
+          <li><strong>Acceso y circulación restringida:</strong> el tratamiento se sujeta a los límites derivados de la naturaleza de los datos.</li>
+          <li><strong>Seguridad:</strong> se aplican las medidas técnicas, humanas y administrativas necesarias para proteger los registros.</li>
+          <li><strong>Confidencialidad:</strong> quienes intervienen en el tratamiento están obligados a garantizar la reserva de la información.</li>
+        </ul>
+      </div></details>
+
+      <details><summary>5. Finalidades del tratamiento</summary><div class="body">
+        <p><strong>Clientes corporativos (call centers / BPO) y contactos administrativos:</strong></p>
+        <ul>
+          <li>Gestionar la relación comercial, contractual, de facturación y soporte técnico del software de escritorio.</li>
+          <li>Enviar notificaciones sobre actualizaciones, mantenimiento y novedades del servicio.</li>
+          <li>Generar informes consolidados y estadísticas agregadas de uso y adherencia a las pausas activas para SST y supervisores.</li>
+        </ul>
+        <p><strong>Usuarios finales (agentes de call center):</strong></p>
+        <ul>
+          <li>Gestionar las sesiones de usuario en la aplicación de escritorio.</li>
+          <li>Programar y personalizar los ciclos de pausas activas, estiramientos y alertas de salud mental.</li>
+          <li>Mapear de forma anónima y agregada el cumplimiento de descansos para mejorar las recomendaciones de ejercicios ergonómicos.</li>
+          <li><strong>Datos de salud (sensibles):</strong> si se recopila información sobre síntomas de fatiga o ergonomía física, se tratará con carácter estrictamente confidencial, con autorización explícita previa del usuario y con medidas de anonimización según la Ley 1581 de 2012.</li>
+        </ul>
+      </div></details>
+
+      <details><summary>6. Derechos de los titulares</summary><div class="body">
+        <p>De conformidad con el artículo 8 de la Ley 1581 de 2012, el Titular tiene derecho a:</p>
+        <ul>
+          <li>Conocer, actualizar y rectificar sus datos personales frente a Vitality Working.</li>
+          <li>Solicitar prueba de la autorización otorgada, salvo cuando la ley exceptúe ese requisito.</li>
+          <li>Ser informado, previa solicitud, del uso que se ha dado a sus datos.</li>
+          <li>Presentar ante la Superintendencia de Industria y Comercio (SIC) quejas por infracciones a la ley.</li>
+          <li>Revocar la autorización y/o solicitar la supresión del dato cuando no se respeten los principios, derechos y garantías constitucionales y legales.</li>
+          <li>Acceder de forma gratuita a sus datos personales objeto de tratamiento.</li>
+        </ul>
+      </div></details>
+
+      <details><summary>7. Procedimiento para consultas y reclamos</summary><div class="body">
+        <p>Los Titulares pueden ejercer sus derechos escribiendo a <a class="link" href="mailto:habeasdata@vitalityworking.com">habeasdata@vitalityworking.com</a>.</p>
+        <p><strong>Consultas.</strong> Se atienden en un máximo de diez (10) días hábiles desde su recibo. Si no es posible, se informa al interesado el motivo de la demora y la nueva fecha, que no superará cinco (5) días hábiles adicionales.</p>
+        <p><strong>Reclamos (corrección, actualización o supresión).</strong> Se presentan con la identificación del Titular, la descripción de los hechos, la dirección y los documentos que se quieran hacer valer.</p>
+        <ul>
+          <li>Si el reclamo está incompleto, se requiere al interesado dentro de los cinco (5) días siguientes para que subsane. Pasados dos (2) meses sin respuesta, se entiende que desistió.</li>
+          <li>El término máximo para atenderlo es de quince (15) días hábiles desde el día siguiente a su recibo. Si no es posible, se informa el motivo y la fecha, que no superará ocho (8) días hábiles adicionales.</li>
+        </ul>
+      </div></details>
+
+      <details><summary>8. Medidas de seguridad</summary><div class="body">
+        <p>Vitality Working adopta las medidas técnicas, jurídicas, humanas y administrativas necesarias para evitar la alteración, pérdida, consulta, uso o acceso no autorizado o fraudulento.</p>
+        <ul>
+          <li><strong>Almacenamiento local y en la nube:</strong> las configuraciones de la aplicación de escritorio se manejan con protocolos de cifrado seguro (SSL/TLS).</li>
+          <li><strong>Acceso restringido:</strong> el acceso a las bases de datos se limita al personal autorizado (Gerencia y Desarrollador de Software) mediante credenciales individuales de alta seguridad.</li>
+        </ul>
+      </div></details>
+
+      <details><summary>9. Vigencia y modificaciones</summary><div class="body">
+        <p>La política rige desde su publicación y difusión. Las bases de datos tendrán una vigencia igual al tiempo en que se mantenga la relación comercial, contractual o legal con el Titular, más el período exigido por las autoridades.</p>
+        <p>Vitality Working puede modificar esta política en cualquier momento. Los cambios sustanciales se informarán a los Titulares por la aplicación de escritorio o por correo electrónico.</p>
+        <p class="meta">Última actualización: octubre de 2026. Expedida en Bucaramanga, Santander, Colombia.</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <a class="brand" href="#inicio"><img loading="lazy" src="assets/logo.png" alt="" width="44" height="40"><span>Vitality <em>Working</em></span></a>
+      <p class="footer__tag">Tu bienestar, también hace parte del trabajo.</p>
+    </div>
+    <div>
+      <p><a href="mailto:contacto@vitalityworking.com">contacto@vitalityworking.com</a></p>
+      <p>Bucaramanga, Santander, Colombia</p>
+    </div>
+    <div>
+      <p>© 2026 Vitality Working S.A.S. (en formación).</p>
+      <p><a href="#politica">Política de tratamiento de datos</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
